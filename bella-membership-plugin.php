@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Paid Memberships Pro
-Plugin URI: http://www.paidmembershipspro.com
-Description: Plugin to Handle Memberships
-Version: 1.8.13.6
-Author: Stranger Studios
-Author URI: http://www.strangerstudios.com
-Text Domain: paid-memberships-pro
+Plugin Name: Millennial Bella Membership
+Plugin URI: http://www.millennialbella.com
+Description: WP Membership Plugin for Webpreneurs
+Version: 1.0
+Author: Millennial Bella
+Author URI: http://www.millennialbella.com
+Text Domain: bella-membership-plugin
 Domain Path: /languages
 */
 /*
-	Copyright 2011	Stranger Studios	(email : jason@strangerstudios.com)
+	Copyright 2017	Millennial Bella	(email : support@millennialbella.com)
 	GPLv2 Full license details in license.txt
 */
 
