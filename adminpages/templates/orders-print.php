@@ -72,9 +72,9 @@
 		</p>
 		<table class="invoice">
 			<tr>
-				<th><?php _e('ID', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e('Item', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e('Price', 'paid-memberships-pro' ); ?></th>
+				<th><?php _e('ID', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e('Item', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e('Price', 'bella-membership-plugin' ); ?></th>
 			</tr>
 			<tr>
 				<td class="aligncenter"><?php echo $level->id; ?></td>
@@ -82,15 +82,15 @@
 				<td class="alignright"><?php echo $order->subtotal; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Subtotal', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Subtotal', 'bella-membership-plugin' ); ?></th>
 				<td class="alignright"><?php echo $order->subtotal; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Tax', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Tax', 'bella-membership-plugin' ); ?></th>
 				<td class="alignright"><?php echo $order->tax; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Total', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Total', 'bella-membership-plugin' ); ?></th>
 				<th class="alignright"><?php echo pmpro_formatPrice( $order->total ); ?></th>
 			</tr>
 		</table>
