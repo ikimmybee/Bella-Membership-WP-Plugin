@@ -1,6 +1,6 @@
 <?php
 /*
-	PMPro Report
+	BM Plugin Report
 	Title: Membership Stats
 	Slug: memberships
 	
@@ -15,7 +15,7 @@
 
 global $pmpro_reports;
 
-$pmpro_reports['memberships'] = __('Membership Stats', 'paid-memberships-pro' );
+$pmpro_reports['memberships'] = __('Membership Stats', 'bella-membership-plugin' );
 
 //queue Google Visualization JS on report page
 function pmpro_report_memberships_init() {
@@ -37,16 +37,16 @@ function pmpro_report_memberships_widget() {
 	<thead>
 		<tr>
 			<th scope="col">&nbsp;</th>
-			<th scope="col"><?php _e('Signups', 'paid-memberships-pro' ); ?></th>
-			<th scope="col"><?php _e('All Cancellations', 'paid-memberships-pro' ); ?></th>
+			<th scope="col"><?php _e('Signups', 'bella-membership-plugin' ); ?></th>
+			<th scope="col"><?php _e('All Cancellations', 'bella-membership-plugin' ); ?></th>
 		</tr>
 	</thead>
 	<?php
 		$reports = array(
 			'today'=> __('Today', 'paid-memberships-pro' ),
-			'this month'=> __('This Month', 'paid-memberships-pro' ),
-			'this year'=> __('This Year', 'paid-memberships-pro' ),
-			'all time'=> __('All Time', 'paid-memberships-pro' ),
+			'this month'=> __('This Month', 'bella-membership-plugin' ),
+			'this year'=> __('This Year', 'bella-membership-plugin' ),
+			'all time'=> __('All Time', 'bella-membership-plugin' ),
 		);
 		
 		foreach($reports as $report_type => $report_name) {
@@ -297,25 +297,25 @@ function pmpro_report_memberships_page()
 	?>
 	<form id="posts-filter" method="get" action="">		
 	<h1>
-		<?php _e('Membership Stats', 'paid-memberships-pro' );?>
+		<?php _e('Membership Stats', 'bella-membership-plugin' );?>
 	</h1>
 	<ul class="subsubsub">
 		<li>
-			<?php _e('Show', 'paid-memberships-pro' )?>
+			<?php _e('Show', 'bella-membership-plugin' )?>
 			<select id="period" name="period">
-				<option value="daily" <?php selected($period, "daily");?>><?php _e('Daily', 'paid-memberships-pro' );?></option>
-				<option value="monthly" <?php selected($period, "monthly");?>><?php _e('Monthly', 'paid-memberships-pro' );?></option>
-				<option value="annual" <?php selected($period, "annual");?>><?php _e('Annual', 'paid-memberships-pro' );?></option>
+				<option value="daily" <?php selected($period, "daily");?>><?php _e('Daily', 'bella-membership-plugin' );?></option>
+				<option value="monthly" <?php selected($period, "monthly");?>><?php _e('Monthly', 'bella-membership-plugin' );?></option>
+				<option value="annual" <?php selected($period, "annual");?>><?php _e('Annual', 'bella-membership-plugin' );?></option>
 			</select>
 			<select id="type" name="type">
-				<option value="signup_v_all" <?php selected($type, "signup_v_all");?>><?php _e('Signups vs. All Cancellations', 'paid-memberships-pro' );?></option>
-				<option value="signup_v_cancel" <?php selected($type, "signup_v_cancel");?>><?php _e('Signups vs. Cancellations', 'paid-memberships-pro' );?></option>
-				<option value="signup_v_expiration" <?php selected($type, "signup_v_expiration");?>><?php _e('Signups vs. Expirations', 'paid-memberships-pro' );?></option>
+				<option value="signup_v_all" <?php selected($type, "signup_v_all");?>><?php _e('Signups vs. All Cancellations', 'bella-membership-plugin' );?></option>
+				<option value="signup_v_cancel" <?php selected($type, "signup_v_cancel");?>><?php _e('Signups vs. Cancellations', 'bella-membership-plugin' );?></option>
+				<option value="signup_v_expiration" <?php selected($type, "signup_v_expiration");?>><?php _e('Signups vs. Expirations', 'bella-membership-plugin' );?></option>
 				<?php /*
 				<option value="mrr_ltv" <?php selected($type, "mrr_ltv");?>><?php _e('MRR & LTV', 'paid-memberships-pro' );?></option>
 				*/ ?>
 			</select>
-			<span id="for"><?php _e('for', 'paid-memberships-pro' )?></span>
+			<span id="for"><?php _e('for', 'bella-membership-plugin' )?></span>
 			<select id="month" name="month">
 				<?php for($i = 1; $i < 13; $i++) { ?>
 					<option value="<?php echo $i;?>" <?php selected($month, $i);?>><?php echo date_i18n("F", mktime(0, 0, 0, $i, 2));?></option>
@@ -326,9 +326,9 @@ function pmpro_report_memberships_page()
 					<option value="<?php echo $i;?>" <?php selected($year, $i);?>><?php echo $i;?></option>
 				<?php } ?>
 			</select>
-			<span id="for"><?php _e('for', 'paid-memberships-pro' )?></span>
+			<span id="for"><?php _e('for', 'bella-membership-plugin' )?></span>
 			<select name="level">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'bella-membership-plugin' );?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->pmpro_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -342,7 +342,7 @@ function pmpro_report_memberships_page()
 			
 			<input type="hidden" name="page" value="pmpro-reports" />		
 			<input type="hidden" name="report" value="memberships" />	
-			<input type="submit" class="button" value="<?php _e('Generate Report', 'paid-memberships-pro' );?>" />
+			<input type="submit" class="button" value="<?php _e('Generate Report', 'bella-membership-plugin' );?>" />
 		</li>
 	</ul>
 	
@@ -453,7 +453,7 @@ function pmpro_report_memberships_page()
 
 
 /*
-	Other code required for your reports. This file is loaded every time WP loads with PMPro enabled.
+	Other code required for your reports. This file is loaded every time WP loads with BM Plugin enabled.
 */
 
 //get signups
