@@ -1,6 +1,6 @@
 <?php
 /*
-	PMPro Report
+	BM Plugin Report
 	Title: Logins
 	Slug: login
 	
@@ -13,7 +13,7 @@
 	* pmpro_report_{slug}_page()     to show up when users click on the report page widget.
 */
 global $pmpro_reports;
-$pmpro_reports['login'] = __('Visits, Views, and Logins', 'paid-memberships-pro' );
+$pmpro_reports['login'] = __('Visits, Views, and Logins', 'bella-membership-plugin' );
 
 function pmpro_report_login_widget()
 {
@@ -28,26 +28,26 @@ function pmpro_report_login_widget()
 	<thead>
 		<tr>
 			<th scope="col">&nbsp;</th>
-			<th scope="col"><?php _e('Visits', 'paid-memberships-pro' ); ?></th>
-			<th scope="col"><?php _e('Views', 'paid-memberships-pro' ); ?></th>
-			<th scope="col"><?php _e('Logins', 'paid-memberships-pro' ); ?></th>
+			<th scope="col"><?php _e('Visits', 'bella-membership-plugin' ); ?></th>
+			<th scope="col"><?php _e('Views', 'bella-membership-plugin' ); ?></th>
+			<th scope="col"><?php _e('Logins', 'bella-membership-plugin' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<th scope="row"><?php _e('Today', 'paid-memberships-pro' ); ?></th>
+			<th scope="row"><?php _e('Today', 'bella-membership-plugin' ); ?></th>
 			<td><?php echo number_format_i18n($visits['today']); ?></td>
 			<td><?php echo number_format_i18n($views['today']); ?></td>
 			<td><?php echo number_format_i18n($logins['today']);?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('This Month', 'paid-memberships-pro' ); ?></th>
+			<th scope="row"><?php _e('This Month', 'bella-membership-plugin' ); ?></th>
 			<td><?php echo number_format_i18n($visits['month']); ?></td>
 			<td><?php echo number_format_i18n($views['month']); ?></td>
 			<td><?php echo number_format_i18n($logins['month']); ?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('All Time', 'paid-memberships-pro' ); ?></th>
+			<th scope="row"><?php _e('All Time', 'bella-membership-plugin' ); ?></th>
 			<td><?php echo number_format_i18n($visits['alltime']); ?></td>
 			<td><?php echo number_format_i18n($views['alltime']);?></td>
 			<td><?php echo number_format_i18n($logins['alltime']); ?></td>
@@ -76,13 +76,13 @@ function pmpro_report_login_page()
 ?>
 	<form id="posts-filter" method="get" action="">	
 	<h1>
-		<?php _e('Visits, Views, and Logins Report', 'paid-memberships-pro' );?>
+		<?php _e('Visits, Views, and Logins Report', 'bella-membership-plugin' );?>
 	</h1>		
 	<ul class="subsubsub">
 		<li>			
-			<?php _e('Show', 'paid-memberships-pro' )?> <select name="l" onchange="jQuery('#posts-filter').submit();">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Users', 'paid-memberships-pro' )?></option>
-				<option value="all" <?php if($l == "all") { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' )?></option>
+			<?php _e('Show', 'bella-membership-plugin' )?> <select name="l" onchange="jQuery('#posts-filter').submit();">
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Users', 'bella-membership-plugin' )?></option>
+				<option value="all" <?php if($l == "all") { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'bella-membership-plugin' )?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->pmpro_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -96,7 +96,7 @@ function pmpro_report_login_page()
 		</li>
 	</ul>
 	<p class="search-box">
-		<label class="hidden" for="post-search-input"><?php _e('Search', 'paid-memberships-pro' )?> <?php if(empty($l)) echo "Users"; else echo "Members";?>:</label>
+		<label class="hidden" for="post-search-input"><?php _e('Search', 'bella-membership-plugin' )?> <?php if(empty($l)) echo "Users"; else echo "Members";?>:</label>
 		<input type="hidden" name="page" value="pmpro-reports" />		
 		<input type="hidden" name="report" value="login" />		
 		<input id="post-search-input" type="text" value="<?php echo esc_attr($s)?>" name="s"/>
@@ -155,20 +155,20 @@ function pmpro_report_login_page()
 	<table class="widefat">
 		<thead>
 			<tr class="thead">
-				<th><?php _e('ID', 'paid-memberships-pro' )?></th>
-				<th><?php _e('User', 'paid-memberships-pro' )?></th>	
-				<th><?php _e('Name', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Membership', 'paid-memberships-pro' )?></th>	
-				<th><?php _e('Joined', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Expires', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Last Visit', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Visits This Month', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Total Visits', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Views This Month', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Total Views', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Last Login', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Logins This Month', 'paid-memberships-pro' )?></th>
-				<th><?php _e('Total Logins', 'paid-memberships-pro' )?></th>				
+				<th><?php _e('ID', 'bella-membership-plugin' )?></th>
+				<th><?php _e('User', 'bella-membership-plugin' )?></th>	
+				<th><?php _e('Name', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Membership', 'bella-membership-plugin' )?></th>	
+				<th><?php _e('Joined', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Expires', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Last Visit', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Visits This Month', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Total Visits', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Views This Month', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Total Views', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Last Login', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Logins This Month', 'bella-membership-plugin' )?></th>
+				<th><?php _e('Total Logins', 'bella-membership-plugin' )?></th>				
 			</tr>
 		</thead>
 		<tbody id="users" class="list:user user-list">	
@@ -225,7 +225,7 @@ function pmpro_report_login_page()
 				{
 				?>
 				<tr>
-					<td colspan="9"><p><?php _e('No members found.', 'paid-memberships-pro' )?> <?php if($l) { ?><a href="?page=pmpro-memberslist&s=<?php echo esc_attr($s)?>"><?php _e('Search all levels', 'paid-memberships-pro' )?></a>.<?php } ?></p></td>
+					<td colspan="9"><p><?php _e('No members found.', 'bella-membership-plugin' )?> <?php if($l) { ?><a href="?page=pmpro-memberslist&s=<?php echo esc_attr($s)?>"><?php _e('Search all levels', 'bella-membership-plugin' )?></a>.<?php } ?></p></td>
 				</tr>
 				<?php
 				}
@@ -241,7 +241,7 @@ function pmpro_report_login_page()
 }
 
 /*
-	Other code required for your reports. This file is loaded every time WP loads with PMPro enabled.
+	Other code required for your reports. This file is loaded every time WP loads with BM Plugin enabled.
 */
 
 //track visits
