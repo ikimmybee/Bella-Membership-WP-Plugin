@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_memberslist")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("Permission Denied.", 'bella-membership-plugin' ));
 	}
 
 	//vars
@@ -22,14 +22,14 @@
 
 	<form id="posts-filter" method="get" action="">
 	<h2>
-		<?php _e('Members List', 'paid-memberships-pro' );?>
-		<a target="_blank" href="<?php echo admin_url('admin-ajax.php');?>?action=memberslist_csv&s=<?php echo esc_attr($s);?>&l=<?php echo $l?>" class="add-new-h2"><?php _e('Export to CSV', 'paid-memberships-pro' );?></a>
+		<?php _e('Members List', 'bella-membership-plugin' );?>
+		<a target="_blank" href="<?php echo admin_url('admin-ajax.php');?>?action=memberslist_csv&s=<?php echo esc_attr($s);?>&l=<?php echo $l?>" class="add-new-h2"><?php _e('Export to CSV', 'bella-membership-plugin' );?></a>
 	</h2>
 	<ul class="subsubsub">
 		<li>
-			<?php _e('Show', 'paid-memberships-pro' );?>
+			<?php _e('Show', 'bella-membership-plugin' );?>
 			<select name="l" onchange="jQuery('#posts-filter').submit();">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'bella-membership-plugin' );?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->pmpro_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -39,17 +39,17 @@
 				<?php
 					}
 				?>
-				<option value="cancelled" <?php if($l == "cancelled") { ?>selected="selected"<?php } ?>><?php _e('Cancelled Members', 'paid-memberships-pro' );?></option>
-				<option value="expired" <?php if($l == "expired") { ?>selected="selected"<?php } ?>><?php _e('Expired Members', 'paid-memberships-pro' );?></option>
-				<option value="oldmembers" <?php if($l == "oldmembers") { ?>selected="selected"<?php } ?>><?php _e('Old Members', 'paid-memberships-pro' );?></option>
+				<option value="cancelled" <?php if($l == "cancelled") { ?>selected="selected"<?php } ?>><?php _e('Cancelled Members', 'bella-membership-plugin' );?></option>
+				<option value="expired" <?php if($l == "expired") { ?>selected="selected"<?php } ?>><?php _e('Expired Members', 'bella-membership-plugin' );?></option>
+				<option value="oldmembers" <?php if($l == "oldmembers") { ?>selected="selected"<?php } ?>><?php _e('Old Members', 'bella-membership-plugin' );?></option>
 			</select>
 		</li>
 	</ul>
 	<p class="search-box">
-		<label class="hidden" for="post-search-input"><?php _e('Search Members', 'paid-memberships-pro' );?>:</label>
+		<label class="hidden" for="post-search-input"><?php _e('Search Members', 'bella-membership-plugin' );?>:</label>
 		<input type="hidden" name="page" value="pmpro-memberslist" />
 		<input id="post-search-input" type="text" value="<?php echo esc_attr($s);?>" name="s"/>
-		<input class="button" type="submit" value="<?php _e('Search Members', 'paid-memberships-pro' );?>"/>
+		<input class="button" type="submit" value="<?php _e('Search Members', 'bella-membership-plugin' );?>"/>
 	</p>
 	<?php
 		//some vars for the search
@@ -66,7 +66,7 @@
 			 * Filter to set the default number of items to show per page
 			 * on the Members List page in the admin.
 			 *
-			 * @since 1.8.4.5
+			 * @since 1.0
 			 *
 			 * @param int $limit The number of items to show per page.
 			 */
@@ -153,7 +153,7 @@
 			else
 			{
 			?>
-			<p class="clear"><?php printf(__("%d members found.", 'paid-memberships-pro' ), $totalrows);?></span></p>
+			<p class="clear"><?php printf(__("%d members found.", 'bella-membership-plugin' ), $totalrows);?></span></p>
 			<?php
 			}
 		}
@@ -161,22 +161,22 @@
 	<table class="widefat">
 		<thead>
 			<tr class="thead">
-				<th><?php _e('ID', 'paid-memberships-pro' );?></th>
-				<th><?php _e('Username', 'paid-memberships-pro' );?></th>
-				<th><?php _e('First&nbsp;Name', 'paid-memberships-pro' );?></th>
-				<th><?php _e('Last&nbsp;Name', 'paid-memberships-pro' );?></th>
-				<th><?php _e('Email', 'paid-memberships-pro' );?></th>
+				<th><?php _e('ID', 'bella-membership-plugin' );?></th>
+				<th><?php _e('Username', 'bella-membership-plugin' );?></th>
+				<th><?php _e('First&nbsp;Name', 'bella-membership-plugin' );?></th>
+				<th><?php _e('Last&nbsp;Name', 'bella-membership-plugin' );?></th>
+				<th><?php _e('Email', 'bella-membership-plugin' );?></th>
 				<?php do_action("pmpro_memberslist_extra_cols_header", $theusers);?>
-				<th><?php _e('Billing Address', 'paid-memberships-pro' );?></th>
+				<th><?php _e('Billing Address', 'bella-membership-plugin' );?></th>
 				<th><?php _e('Membership', 'paid-memberships-pro' );?></th>
-				<th><?php _e('Fee', 'paid-memberships-pro' );?></th>
-				<th><?php _e('Joined', 'paid-memberships-pro' );?></th>
+				<th><?php _e('Fee', 'bella-membership-plugin' );?></th>
+				<th><?php _e('Joined', 'bella-membership-plugin' );?></th>
 				<th>
 					<?php
 						if($l == "oldmembers")
-							_e('Ended', 'paid-memberships-pro' );
+							_e('Ended', 'bella-membership-plugin' );
 						else
-							_e('Expires', 'paid-memberships-pro' );
+							_e('Expires', 'bella-membership-plugin' );
 					?>
 				</th>
 			</tr>
@@ -259,7 +259,7 @@
 				{
 				?>
 				<tr>
-					<td colspan="9"><p><?php _e("No members found.", 'paid-memberships-pro' );?> <?php if($l) { ?><a href="?page=pmpro-memberslist&s=<?php echo esc_attr($s);?>"><?php _e("Search all levels", 'paid-memberships-pro' );?></a>.<?php } ?></p></td>
+					<td colspan="9"><p><?php _e("No members found.", 'paid-memberships-pro' );?> <?php if($l) { ?><a href="?page=pmpro-memberslist&s=<?php echo esc_attr($s);?>"><?php _e("Search all levels", 'bella-membership-plugin' );?></a>.<?php } ?></p></td>
 				</tr>
 				<?php
 				}
