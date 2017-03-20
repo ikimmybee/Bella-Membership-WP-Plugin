@@ -1,7 +1,7 @@
 <?php
 //only admins can get this
 if ( ! function_exists( "current_user_can" ) || ( ! current_user_can( "manage_options" ) && ! current_user_can( "pmpro_orders" ) ) ) {
-	die( __( "You do not have permissions to perform this action.", 'paid-memberships-pro' ) );
+	die( __( "You do not have permissions to perform this action.", 'bella-membership-plugin' ) );
 }
 
 //vars
@@ -86,7 +86,7 @@ if ( isset( $_REQUEST['limit'] ) ) {
 	 * Filter to set the default number of items to show per page
 	 * on the Orders page in the admin.
 	 *
-	 * @since 1.8.4.5
+	 * @since 1.0
 	 *
 	 * @param int $limit The number of items to show per page.
 	 */
@@ -143,10 +143,10 @@ if ( ! empty( $_REQUEST['email'] ) && ! empty( $_REQUEST['order'] ) ) {
 	$user  = get_user_by( 'email', $_REQUEST['email'] );
 	$order = new MemberOrder( $_REQUEST['order'] );
 	if ( $email->sendBillableInvoiceEmail( $user, $order ) ) {
-		$pmpro_msg  = __( "Invoice emailed successfully.", 'paid-memberships-pro' );
+		$pmpro_msg  = __( "Invoice emailed successfully.", 'bella-membership-plugin' );
 		$pmpro_msgt = "success";
 	} else {
-		$pmpro_msg  = __( "Error emailing invoice.", 'paid-memberships-pro' );
+		$pmpro_msg  = __( "Error emailing invoice.", 'bella-membership-plugin' );
 		$pmpro_msgt = "error";
 	}
 
@@ -159,10 +159,10 @@ if ( ! empty( $_REQUEST['email'] ) && ! empty( $_REQUEST['order'] ) ) {
 if ( ! empty( $_REQUEST['delete'] ) ) {
 	$dorder = new MemberOrder( intval( $_REQUEST['delete'] ) );
 	if ( $dorder->deleteMe() ) {
-		$pmpro_msg  = __( "Order deleted successfully.", 'paid-memberships-pro' );
+		$pmpro_msg  = __( "Order deleted successfully.", 'bella-membership-plugin' );
 		$pmpro_msgt = "success";
 	} else {
-		$pmpro_msg  = __( "Error deleting order.", 'paid-memberships-pro' );
+		$pmpro_msg  = __( "Error deleting order.", 'bella-membership-plugin' );
 		$pmpro_msgt = "error";
 	}
 }
@@ -282,14 +282,14 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 	if ( $order->saveOrder() !== false ) {
 		//handle timestamp
 		if ( $order->updateTimestamp( $_POST['ts_year'], $_POST['ts_month'], $_POST['ts_day'] ) !== false ) {
-			$pmpro_msg  = __( "Order saved successfully.", 'paid-memberships-pro' );
+			$pmpro_msg  = __( "Order saved successfully.", 'bella-membership-plugin' );
 			$pmpro_msgt = "success";
 		} else {
-			$pmpro_msg  = __( "Error updating order timestamp.", 'paid-memberships-pro' );
+			$pmpro_msg  = __( "Error updating order timestamp.", 'bella-membership-plugin' );
 			$pmpro_msgt = "error";
 		}
 	} else {
-		$pmpro_msg  = __( "Error saving order.", 'paid-memberships-pro' );
+		$pmpro_msg  = __( "Error saving order.", 'bella-membership-plugin' );
 		$pmpro_msgt = "error";
 	}
 } else {
@@ -349,9 +349,9 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 
 	<h2>
 		<?php if ( ! empty( $order->id ) ) { ?>
-			<?php _e( 'Order', 'paid-memberships-pro' ); ?> #<?php echo $order->id ?>: <?php echo $order->code ?>
+			<?php _e( 'Order', 'bella-membership-plugin' ); ?> #<?php echo $order->id ?>: <?php echo $order->code ?>
 		<?php } else { ?>
-			<?php _e( 'New Order', 'paid-memberships-pro' ); ?>
+			<?php _e( 'New Order', 'bella-membership-plugin' ); ?>
 		<?php } ?>
 	</h2>
 
@@ -372,12 +372,12 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<td><?php if ( ! empty( $order->id ) ) {
 						echo $order->id;
 					} else {
-						echo __( "This will be generated when you save.", 'paid-memberships-pro' );
+						echo __( "This will be generated when you save.", 'bella-membership-plugin' );
 					} ?></td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="code"><?php _e( 'Code', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="code"><?php _e( 'Code', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "code", $read_only_fields ) ) {
 						echo $order->code;
@@ -387,12 +387,12 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 					<?php } ?>
 					<?php if ( $order_id < 0 ) { ?>
 						<small
-							class="pmpro_lite"><?php _e( 'Randomly generated for you.', 'paid-memberships-pro' ); ?></small><?php } ?>
+							class="pmpro_lite"><?php _e( 'Randomly generated for you.', 'bella-membership-plugin' ); ?></small><?php } ?>
 				</td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="user_id"><?php _e( 'User ID', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="user_id"><?php _e( 'User ID', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "user_id", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->user_id;
@@ -404,7 +404,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="membership_id"><?php _e( 'Membership Level ID', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="membership_id"><?php _e( 'Membership Level ID', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "membership_id", $read_only_fields ) && $order_id > 0 ) {
@@ -429,7 +429,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_street"><?php _e( 'Billing Street', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_street"><?php _e( 'Billing Street', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "billing_street", $read_only_fields ) && $order_id > 0 ) {
@@ -440,7 +440,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_city"><?php _e( 'Billing City', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="billing_city"><?php _e( 'Billing City', 'bella-membership-plugin' ); ?>:</label>
 				</th>
 				<td>
 					<?php if ( in_array( "billing_city", $read_only_fields ) && $order_id > 0 ) {
@@ -451,7 +451,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_state"><?php _e( 'Billing State', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_state"><?php _e( 'Billing State', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "billing_state", $read_only_fields ) && $order_id > 0 ) {
@@ -462,7 +462,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_zip"><?php _e( 'Billing Postal Code', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_zip"><?php _e( 'Billing Postal Code', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "billing_zip", $read_only_fields ) && $order_id > 0 ) {
@@ -473,7 +473,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_country"><?php _e( 'Billing Country', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_country"><?php _e( 'Billing Country', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "billing_country", $read_only_fields ) && $order_id > 0 ) {
@@ -485,7 +485,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_phone"><?php _e( 'Billing Phone', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_phone"><?php _e( 'Billing Phone', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "billing_phone", $read_only_fields ) && $order_id > 0 ) {
@@ -498,7 +498,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="subtotal"><?php _e( 'Sub Total', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="subtotal"><?php _e( 'Sub Total', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "subtotal", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->subtotal;
@@ -509,7 +509,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="tax"><?php _e( 'Tax', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="tax"><?php _e( 'Tax', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "tax", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->tax;
@@ -520,7 +520,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="couponamount"><?php _e( 'Coupon Amount', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="couponamount"><?php _e( 'Coupon Amount', 'bella-membership-plugin' ); ?>:</label>
 				</th>
 				<td>
 					<?php if ( in_array( "couponamount", $read_only_fields ) && $order_id > 0 ) {
@@ -532,7 +532,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="total"><?php _e( 'Total', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="total"><?php _e( 'Total', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "total", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->total;
@@ -541,12 +541,12 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						       value="<?php echo esc_attr( $order->total ); ?>"/>
 					<?php } ?>
 					<small
-						class="pmpro_lite"><?php _e( 'Should be subtotal + tax - couponamount.', 'paid-memberships-pro' ); ?></small>
+						class="pmpro_lite"><?php _e( 'Should be subtotal + tax - couponamount.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="payment_type"><?php _e( 'Payment Type', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="payment_type"><?php _e( 'Payment Type', 'bella-membership-plugin' ); ?>:</label>
 				</th>
 				<td>
 					<?php if ( in_array( "payment_type", $read_only_fields ) && $order_id > 0 ) {
@@ -556,11 +556,11 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						       value="<?php echo esc_attr( $order->payment_type ); ?>"/>
 					<?php } ?>
 					<small
-						class="pmpro_lite"><?php _e( 'e.g. PayPal Express, PayPal Standard, Credit Card.', 'paid-memberships-pro' ); ?></small>
+						class="pmpro_lite"><?php _e( 'e.g. PayPal Express, PayPal Standard, Credit Card.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="cardtype"><?php _e( 'Card Type', 'paid-memberships-pro' ); ?></label></th>
+				<th scope="row" valign="top"><label for="cardtype"><?php _e( 'Card Type', 'bella-membership-plugin' ); ?></label></th>
 				<td>
 					<?php if ( in_array( "cardtype", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->cardtype;
@@ -568,11 +568,11 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						<input id="cardtype" name="cardtype" type="text" size="50"
 						       value="<?php echo esc_attr( $order->cardtype ); ?>"/>
 					<?php } ?>
-					<small class="pmpro_lite"><?php _e( 'e.g. Visa, MasterCard, AMEX, etc', 'paid-memberships-pro' ); ?></small>
+					<small class="pmpro_lite"><?php _e( 'e.g. Visa, MasterCard, AMEX, etc', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="accountnumber"><?php _e( 'Account Number', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="accountnumber"><?php _e( 'Account Number', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "accountnumber", $read_only_fields ) && $order_id > 0 ) {
@@ -581,7 +581,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						<input id="accountnumber" name="accountnumber" type="text" size="50"
 						       value="<?php echo esc_attr( $order->accountnumber ); ?>"/>
 					<?php } ?>
-					<small class="pmpro_lite"><?php _e( 'Obscure all but last 4 digits.', 'paid-memberships-pro' ); ?></small>
+					<small class="pmpro_lite"><?php _e( 'Obscure all but last 4 digits.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<?php if ( in_array( "ExpirationDate", $read_only_fields ) && $order_id > 0 ) {
@@ -589,7 +589,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			} else { ?>
 				<tr>
 					<th scope="row" valign="top"><label
-							for="expirationmonth"><?php _e( 'Expiration Month', 'paid-memberships-pro' ); ?>:</label></th>
+							for="expirationmonth"><?php _e( 'Expiration Month', 'bella-membership-plugin' ); ?>:</label></th>
 					<td>
 						<input id="expirationmonth" name="expirationmonth" type="text" size="10"
 						       value="<?php echo esc_attr( $order->expirationmonth ); ?>"/>
@@ -597,7 +597,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" valign="top"><label for="expirationyear"><?php _e( 'Expiration Year', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="expirationyear"><?php _e( 'Expiration Year', 'bella-membership-plugin' ); ?>
 							:</label></th>
 					<td>
 						<input id="expirationyear" name="expirationyear" type="text" size="10"
@@ -607,7 +607,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</tr>
 			<?php } ?>
 			<tr>
-				<th scope="row" valign="top"><label for="status"><?php _e( 'Status', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="status"><?php _e( 'Status', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "status", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->status;
@@ -640,7 +640,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="gateway"><?php _e( 'Gateway', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="gateway"><?php _e( 'Gateway', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "gateway", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->gateway;
@@ -661,16 +661,16 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			</tr>
 			<tr>
 				<th scope="row" valign="top"><label
-						for="gateway_environment"><?php _e( 'Gateway Environment', 'paid-memberships-pro' ); ?>:</label></th>
+						for="gateway_environment"><?php _e( 'Gateway Environment', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "gateway_environment", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->gateway_environment;
 					} else { ?>
 						<select name="gateway_environment">
 							<option value="sandbox"
-							        <?php if ( $order->gateway_environment == "sandbox" ) { ?>selected="selected"<?php } ?>><?php _e( 'Sandbox/Testing', 'paid-memberships-pro' ); ?></option>
+							        <?php if ( $order->gateway_environment == "sandbox" ) { ?>selected="selected"<?php } ?>><?php _e( 'Sandbox/Testing', 'bella-membership-plugin' ); ?></option>
 							<option value="live"
-							        <?php if ( $order->gateway_environment == "live" ) { ?>selected="selected"<?php } ?>><?php _e( 'Live/Production', 'paid-memberships-pro' ); ?></option>
+							        <?php if ( $order->gateway_environment == "live" ) { ?>selected="selected"<?php } ?>><?php _e( 'Live/Production', 'bella-membership-plugin' ); ?></option>
 						</select>
 					<?php } ?>
 				</td>
@@ -678,7 +678,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 
 			<tr>
 				<th scope="row" valign="top"><label
-						for="payment_transaction_id"><?php _e( 'Payment Transaction ID', 'paid-memberships-pro' ); ?>:</label></th>
+						for="payment_transaction_id"><?php _e( 'Payment Transaction ID', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "payment_transaction_id", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->payment_transaction_id;
@@ -687,12 +687,12 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						       value="<?php echo esc_attr( $order->payment_transaction_id ); ?>"/>
 					<?php } ?>
 					<small
-						class="pmpro_lite"><?php _e( 'Generated by the gateway. Useful to cross reference orders.', 'paid-memberships-pro' ); ?></small>
+						class="pmpro_lite"><?php _e( 'Generated by the gateway. Useful to cross reference orders.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top"><label
-						for="subscription_transaction_id"><?php _e( 'Subscription Transaction ID', 'paid-memberships-pro' ); ?>
+						for="subscription_transaction_id"><?php _e( 'Subscription Transaction ID', 'bella-membership-plugin' ); ?>
 						:</label></th>
 				<td>
 					<?php if ( in_array( "subscription_transaction_id", $read_only_fields ) && $order_id > 0 ) {
@@ -702,12 +702,12 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						       value="<?php echo esc_attr( $order->subscription_transaction_id ); ?>"/>
 					<?php } ?>
 					<small
-						class="pmpro_lite"><?php _e( 'Generated by the gateway. Useful to cross reference subscriptions.', 'paid-memberships-pro' ); ?></small>
+						class="pmpro_lite"><?php _e( 'Generated by the gateway. Useful to cross reference subscriptions.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="ts_month"><?php _e( 'Date', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="ts_month"><?php _e( 'Date', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "timestamp", $read_only_fields ) && $order_id > 0 ) {
 						echo date_i18n( get_option( 'date_format' ) . " " . get_option( 'time_format' ), $order->timestamp );
@@ -744,7 +744,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			if ( ! empty( $affiliates ) ) {
 				?>
 				<tr>
-					<th scope="row" valign="top"><label for="affiliate_id"><?php _e( 'Affiliate ID', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="affiliate_id"><?php _e( 'Affiliate ID', 'bella-membership-plugin' ); ?>
 							:</label></th>
 					<td>
 						<?php if ( in_array( "affiliate_id", $read_only_fields ) && $order_id > 0 ) {
@@ -756,7 +756,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" valign="top"><label for="affiliate_subid"><?php _e( 'Affiliate SubID', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="affiliate_subid"><?php _e( 'Affiliate SubID', 'bella-membership-plugin' ); ?>
 							:</label></th>
 					<td>
 						<?php if ( in_array( "affiliate_subid", $read_only_fields ) && $order_id > 0 ) {
@@ -770,7 +770,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			<?php } ?>
 
 			<tr>
-				<th scope="row" valign="top"><label for="notes"><?php _e( 'Notes', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="notes"><?php _e( 'Notes', 'bella-membership-plugin' ); ?>:</label></th>
 				<td>
 					<?php if ( in_array( "notes", $read_only_fields ) && $order_id > 0 ) {
 						echo $order->notes;
@@ -792,8 +792,8 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			} else {
 				echo $order_id;
 			} ?>"/>
-			<input name="save" type="submit" class="button-primary" value="<?php _e( 'Save Order', 'paid-memberships-pro' ); ?>"/>
-			<input name="cancel" type="button" class="cancel button-secondary" value="<?php _e( 'Cancel', 'paid-memberships-pro' ); ?>"
+			<input name="save" type="submit" class="button-primary" value="<?php _e( 'Save Order', 'bella-membership-plugin' ); ?>"/>
+			<input name="cancel" type="button" class="cancel button-secondary" value="<?php _e( 'Cancel', 'bella-membership-plugin' ); ?>"
 			       onclick="location.href='<?php echo get_admin_url( null, '/admin.php?page=pmpro-orders' ) ?>';"/>
 		</p>
 
@@ -828,19 +828,19 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 	</script>
 	<?php add_thickbox(); ?>
 	<div id="email_invoice" style="display:none;">
-		<h3><?php _e( 'Email Invoice', 'paid-memberships-pro' ); ?></h3>
+		<h3><?php _e( 'Email Invoice', 'bella-membership-plugin' ); ?></h3>
 		<form method="post" action="">
 			<input type="hidden" name="order" value=""/>
-			<?php _e( 'Send an invoice for this order to: ', 'paid-memberships-pro' ); ?>
+			<?php _e( 'Send an invoice for this order to: ', 'bella-membership-plugin' ); ?>
 			<input type="text" value="" name="email"/>
-			<button class="button button-primary alignright"><?php _e( 'Send Email', 'paid-memberships-pro' ); ?></button>
+			<button class="button button-primary alignright"><?php _e( 'Send Email', 'bella-membership-plugin' ); ?></button>
 		</form>
 	</div>
 	<form id="posts-filter" method="get" action="">
 		<h2>
-			<?php _e( 'Orders', 'paid-memberships-pro' ); ?>
+			<?php _e( 'Orders', 'bella-membership-plugin' ); ?>
 			<a href="admin.php?page=pmpro-orders&order=-1"
-			   class="add-new-h2">+ <?php _e( 'Add New Order', 'paid-memberships-pro' ); ?></a>
+			   class="add-new-h2">+ <?php _e( 'Add New Order', 'bella-membership-plugin' ); ?></a>
 
 			<?php
 			//build the export URL
@@ -861,7 +861,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			$export_url = add_query_arg( $url_params, $export_url );
 			?>
 			<a target="_blank" href="<?php echo $export_url; ?>"
-			   class="add-new-h2"><?php _e( 'Export to CSV', 'paid-memberships-pro' ); ?></a>
+			   class="add-new-h2"><?php _e( 'Export to CSV', 'bella-membership-plugin' ); ?></a>
 		</h2>
 
 
@@ -876,20 +876,20 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 
 		<ul class="subsubsub">
 			<li>
-				<?php _e( 'Show', 'paid-memberships-pro' ) ?>
+				<?php _e( 'Show', 'bella-membership-plugin' ) ?>
 				<select id="filter" name="filter">
-					<option value="all" <?php selected( $filter, "all" ); ?>><?php _e( 'All', 'paid-memberships-pro' ); ?></option>
+					<option value="all" <?php selected( $filter, "all" ); ?>><?php _e( 'All', 'bella-membership-plugin' ); ?></option>
 					<option
-						value="within-a-date-range" <?php selected( $filter, "within-a-date-range" ); ?>><?php _e( 'Within a Date Range', 'paid-memberships-pro' ); ?></option>
+						value="within-a-date-range" <?php selected( $filter, "within-a-date-range" ); ?>><?php _e( 'Within a Date Range', 'bella-membership-plugin' ); ?></option>
 					<option
-						value="predefined-date-range" <?php selected( $filter, "predefined-date-range" ); ?>><?php _e( 'Predefined Date Range', 'paid-memberships-pro' ); ?></option>
+						value="predefined-date-range" <?php selected( $filter, "predefined-date-range" ); ?>><?php _e( 'Predefined Date Range', 'bella-membership-plugin' ); ?></option>
 					<option
-						value="within-a-level" <?php selected( $filter, "within-a-level" ); ?>><?php _e( 'Within a Level', 'paid-memberships-pro' ); ?></option>
+						value="within-a-level" <?php selected( $filter, "within-a-level" ); ?>><?php _e( 'Within a Level', 'bella-membership-plugin' ); ?></option>
 					<option
-						value="within-a-status" <?php selected( $filter, "within-a-status" ); ?>><?php _e( 'Within a Status', 'paid-memberships-pro' ); ?></option>
+						value="within-a-status" <?php selected( $filter, "within-a-status" ); ?>><?php _e( 'Within a Status', 'bella-membership-plugin' ); ?></option>
 				</select>
 
-				<span id="from"><?php _e( 'From', 'paid-memberships-pro' ) ?></span>
+				<span id="from"><?php _e( 'From', 'bella-membership-plugin' ) ?></span>
 
 				<select id="start-month" name="start-month">
 					<?php for ( $i = 1; $i < 13; $i ++ ) { ?>
@@ -904,7 +904,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				       value="<?php echo esc_attr( $start_year ); ?>"/>
 
 
-				<span id="to"><?php _e( 'To', 'paid-memberships-pro' ) ?></span>
+				<span id="to"><?php _e( 'To', 'bella-membership-plugin' ) ?></span>
 
 				<select id="end-month" name="end-month">
 					<?php for ( $i = 1; $i < 13; $i ++ ) { ?>
@@ -917,7 +917,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				<input id='end-day' name="end-day" type="text" size="2" value="<?php echo esc_attr( $end_day ); ?>"/>
 				<input id='end-year' name="end-year" type="text" size="4" value="<?php echo esc_attr( $end_year ); ?>"/>
 
-				<span id="filterby"><?php _e( 'filter by ', 'paid-memberships-pro' ) ?></span>
+				<span id="filterby"><?php _e( 'filter by ', 'bella-membership-plugin' ) ?></span>
 
 				<select id="predefined-date" name="predefined-date">
 
@@ -960,7 +960,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 				</select>
 
 
-				<input id="submit" type="submit" value="<?php _e( 'Filter', 'paid-memberships-pro' ); ?>"/>
+				<input id="submit" type="submit" value="<?php _e( 'Filter', 'bella-membership-plugin' ); ?>"/>
 			</li>
 		</ul>
 
@@ -1057,10 +1057,10 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 		</script>
 
 		<p class="search-box">
-			<label class="hidden" for="post-search-input"><?php _e( 'Search Orders', 'paid-memberships-pro' ); ?>:</label>
+			<label class="hidden" for="post-search-input"><?php _e( 'Search Orders', 'bella-membership-plugin' ); ?>:</label>
 			<input type="hidden" name="page" value="pmpro-orders"/>
 			<input id="post-search-input" type="text" value="<?php echo esc_attr( $s ); ?>" name="s"/>
-			<input class="button" type="submit" value="<?php _e( 'Search Orders', 'paid-memberships-pro' ); ?>"/>
+			<input class="button" type="submit" value="<?php _e( 'Search Orders', 'bella-membership-plugin' ); ?>"/>
 		</p>
 
 		<?php
@@ -1124,24 +1124,24 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 
 		if ( $order_ids ) {
 			?>
-			<p class="clear"><?php printf( __( "%d orders found.", 'paid-memberships-pro' ), $totalrows ); ?></span></p>
+			<p class="clear"><?php printf( __( "%d orders found.", 'bella-membership-plugin' ), $totalrows ); ?></span></p>
 			<?php
 		}
 		?>
 		<table class="widefat">
 			<thead>
 			<tr class="thead">
-				<th><?php _e( 'ID', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Code', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'User', 'paid-memberships-pro' ); ?></th>
+				<th><?php _e( 'ID', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Code', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'User', 'bella-membership-plugin' ); ?></th>
 				<?php do_action( "pmpro_orders_extra_cols_header", $order_ids ); ?>
-				<th><?php _e( 'Membership Level', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Total', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Payment', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Gateway', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Transaction IDs', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Status', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e( 'Date', 'paid-memberships-pro' ); ?></th>
+				<th><?php _e( 'Membership Level', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Total', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Payment', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Gateway', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Transaction IDs', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Status', 'bella-membership-plugin' ); ?></th>
+				<th><?php _e( 'Date', 'bella-membership-plugin' ); ?></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -1169,7 +1169,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						<?php if ( ! empty( $order->user ) ) { ?>
 							<a href="user-edit.php?user_id=<?php echo $order->user->ID ?>"><?php echo $order->user->user_login ?></a>
 						<?php } else { ?>
-							[<?php _e( 'deleted', 'paid-memberships-pro' ); ?>]
+							[<?php _e( 'deleted', 'bella-membership-plugin' ); ?>]
 						<?php } ?>
 						<br/>
 						<?php
@@ -1217,13 +1217,13 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 							echo "(test)";
 						} ?></td>
 					<td>
-						<?php _e( 'Payment', 'paid-memberships-pro' ); ?>: <?php if ( ! empty( $order->payment_transaction_id ) ) {
+						<?php _e( 'Payment', 'bella-membership-plugin' ); ?>: <?php if ( ! empty( $order->payment_transaction_id ) ) {
 							echo $order->payment_transaction_id;
 						} else {
 							echo "N/A";
 						} ?>
 						<br/>
-						<?php _e( 'Subscription', 'paid-memberships-pro' ); ?>
+						<?php _e( 'Subscription', 'bella-membership-plugin' ); ?>
 						: <?php if ( ! empty( $order->subscription_transaction_id ) ) {
 							echo $order->subscription_transaction_id;
 						} else {
@@ -1236,21 +1236,21 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 						<?php echo date_i18n( get_option( 'time_format' ), $order->timestamp ); ?>
 					</td>
 					<td align="center">
-						<a href="admin.php?page=pmpro-orders&order=<?php echo $order->id; ?>"><?php _e( 'edit', 'paid-memberships-pro' ); ?></a>
+						<a href="admin.php?page=pmpro-orders&order=<?php echo $order->id; ?>"><?php _e( 'edit', 'bella-membership-plugin' ); ?></a>
 					</td>
 					<td align="center">
-						<a href="admin.php?page=pmpro-orders&order=-1&copy=<?php echo $order->id; ?>"><?php _e( 'copy', 'paid-memberships-pro' ); ?></a>
+						<a href="admin.php?page=pmpro-orders&order=-1&copy=<?php echo $order->id; ?>"><?php _e( 'copy', 'bella-membership-plugin' ); ?></a>
 					</td>
 					<td align="center">
-						<a href="javascript:askfirst('<?php echo str_replace( "'", "\'", sprintf( __( "Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?", 'paid-memberships-pro' ), str_replace( "'", "", $order->code ) ) ); ?>', 'admin.php?page=pmpro-orders&delete=<?php echo $order->id; ?>'); void(0);"><?php _e( 'delete', 'paid-memberships-pro' ); ?></a>
+						<a href="javascript:askfirst('<?php echo str_replace( "'", "\'", sprintf( __( "Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?", 'bella-membership-plugin' ), str_replace( "'", "", $order->code ) ) ); ?>', 'admin.php?page=pmpro-orders&delete=<?php echo $order->id; ?>'); void(0);"><?php _e( 'delete', 'bella-membership-plugin' ); ?></a>
 					</td>
 					<td align="center">
 						<a href="admin-ajax.php?action=pmpro_orders_print_view&order=<?php echo $order->id; ?>"
-						   target="_blank"><?php _e( 'print', 'paid-memberships-pro' ); ?></a>
+						   target="_blank"><?php _e( 'print', 'bella-membership-plugin' ); ?></a>
 					</td>
 					<td align="center">
 						<a href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link"
-						   data-order="<?php echo $order->id; ?>"><?php _e( 'email', 'paid-memberships-pro' ); ?></a>
+						   data-order="<?php echo $order->id; ?>"><?php _e( 'email', 'bella-membership-plugin' ); ?></a>
 					</td>
 				</tr>
 				<?php
@@ -1259,7 +1259,7 @@ require_once( dirname( __FILE__ ) . "/admin_header.php" );
 			if ( ! $order_ids ) {
 				?>
 				<tr>
-					<td colspan="9"><p><?php _e( 'No orders found.', 'paid-memberships-pro' ); ?></p></td>
+					<td colspan="9"><p><?php _e( 'No orders found.', 'bella-membership-plugin' ); ?></p></td>
 				</tr>
 				<?php
 			}
