@@ -1,16 +1,16 @@
 === Bella Membership Plugin ===
 Contributors: Millennial Bella
-Tags: memberships, membership, authorize.net, ecommerce, paypal, stripe, braintree, restrict access, restrict content, directory site, payflow
-Requires at least: 4
+Tags: memberships, membership, authorize.net, e-commerce, paypal, stripe, braintree, restrict access, restrict content, directory site, payflow
+Requires at least: 1.0
 Tested up to: 1.0
 Stable tag: 1.0
 
-A revenue-generating machine for membership sites. Unlimited levels with recurring payment, protected content, and member management.
+A revenue-generating machine for membership sites. Unlimited levels with recurring payments, protected contents, and member management.
 
 == Description ==
 Set up unlimited membership levels and provide restricted access to members-only content (including pages, posts, categories, videos, forums, downloads, support, single "a la carte" page access, and more). 
 
-Bella Membership Plugin is flexible enough to fit the needs of almost all online and offline businesses. It works great out of the box, but is easy for developers to customize to fit your needs.
+Bella Membership Plugin is flexible enough to fit the needs of almost all online and offline businesses. It works great out of the box, and is easy for developers to customize to fit your needs.
 
 
 Bella Membership Plugin is 100% GPL and available for free from the WordPress repository or on the website at http://www.millennialbella.com. The full version of the plugin is offered with no restrictions or additional licenses required.
@@ -19,7 +19,7 @@ Bella Membership Plugin is 100% GPL and available for free from the WordPress re
 Stripe, Authorize.net, PayPal (Standard, Express, Website Payments Pro, and PayPal Payments Pro/Payflow), Braintree, 2Checkout, and Cybersource. 
 
 = Works with Any Theme You Want. =
-Use your Existing Theme, the fully-integrated.
+Use your Existing Theme, fully-integrated.
 
 = Infinitely Configurable, Unlimited Membership Levels. =
 Set up the membership levels that best fit your business, whether they are Free, Paid, or Recurring Subscriptions (Annual, Monthly, Weekly, Daily). Offer Custom Trial Periods (Free Trial, Custom-length Trial, 'Introductory' Pricing).
@@ -35,7 +35,7 @@ Set up the membership levels that best fit your business, whether they are Free,
 Your members can update their billing information or cancel their account directly on your site. Any active subscription will be cancelled at the payment gateway for you.
 
 = Integrate with Top Third Party Tools. =
-PMPro integrates with Mailchimp, Constant Contact, AWeber, GetResponse, Social Login, KISSMetrics, Infusionsoft, WP Courseware, LearnDash, Post Affiliate Pro, bbPress, WooCommerce, and many more popular third party tools.
+The BM Plugin integrates with Mailchimp, Constant Contact, AWeber, GetResponse, Social Login, KISSMetrics, Infusionsoft, WP Courseware, LearnDash, Post Affiliate Pro, bbPress, WooCommerce, and many more popular third party tools.
 
 = Add-ons to Customize and Extend The BM Plugin. =
 Our growing library of Add ons allow you to extend Bella Membership Plugin to your needs. These extensions, sister plugins, and recipes customize your membership site and help you integrate with 3rd party services or other plugins.
@@ -60,6 +60,7 @@ Go to Memberships in the WordPress admin for a step-by-step initial setup. The b
 4. Email: Customize Email Settings
 5. Advanced Settings: Update non-member messages, optionally show excerpts or filter content.
 
+= More Features Coming Soon =
 
 == Changelog ==
 = 1.0 =
