@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_paymentsettings")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("You do not have permissions to perform this action.", 'bella-membership-plugin' ));
 	}
 
 	global $wpdb, $pmpro_currency_symbol, $msg, $msgt;
@@ -46,7 +46,7 @@
 
 		//assume success
 		$msg = true;
-		$msgt = __("Your payment settings have been updated.", 'paid-memberships-pro' );
+		$msgt = __("Your payment settings have been updated.", 'bella-membership-plugin' );
 	}
 
 	/*
@@ -90,20 +90,20 @@
 ?>
 
 	<form action="" method="post" enctype="multipart/form-data">
-		<h2><?php _e('Payment Gateway', 'paid-memberships-pro' );?> &amp; <?php _e('SSL Settings', 'paid-memberships-pro' );?></h2>
+		<h2><?php _e('Payment Gateway', 'bella-membership-plugin' );?> &amp; <?php _e('SSL Settings', 'bella-membership-plugin' );?></h2>
 
-		<p><?php _e('Learn more about <a title="Paid Memberships Pro - SSL Settings" target="_blank" href="http://www.paidmembershipspro.com/support/initial-plugin-setup/ssl/">SSL</a> or <a title="Paid Memberships Pro - Payment Gateway Settings" target="_blank" href="http://www.paidmembershipspro.com/support/initial-plugin-setup/payment-gateway/">Payment Gateway Settings</a>.', 'paid-memberships-pro' ); ?></p>
+		<p><?php _e('Learn more about <a title="Bella Membership Plugin - SSL Settings" target="_blank" href="http://www.millennialbella.com/support/">SSL</a> or <a title="Bella Membership Plugin - Payment Gateway Settings" target="_blank" href="http://www.millennialbella.com/support/">Payment Gateway Settings</a>.', 'bella-membership-plugin' ); ?></p>
 
 		<table class="form-table">
 		<tbody>
 			<tr class="pmpro_settings_divider">
 				<td colspan="2">
-					<?php _e('Choose a Gateway', 'paid-memberships-pro' ); ?>
+					<?php _e('Choose a Gateway', 'bella-membership-plugin' ); ?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="gateway"><?php _e('Payment Gateway', 'paid-memberships-pro' );?>:</label>
+					<label for="gateway"><?php _e('Payment Gateway', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
 					<select id="gateway" name="gateway" onchange="pmpro_changeGateway(jQuery(this).val());">
@@ -121,12 +121,12 @@
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="gateway_environment"><?php _e('Gateway Environment', 'paid-memberships-pro' );?>:</label>
+					<label for="gateway_environment"><?php _e('Gateway Environment', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
 					<select name="gateway_environment">
-						<option value="sandbox" <?php selected( $gateway_environment, "sandbox" ); ?>><?php _e('Sandbox/Testing', 'paid-memberships-pro' );?></option>
-						<option value="live" <?php selected( $gateway_environment, "live" ); ?>><?php _e('Live/Production', 'paid-memberships-pro' );?></option>
+						<option value="sandbox" <?php selected( $gateway_environment, "sandbox" ); ?>><?php _e('Sandbox/Testing', 'bella-membership-plugin' );?></option>
+						<option value="live" <?php selected( $gateway_environment, "live" ); ?>><?php _e('Live/Production', 'bella-membership-plugin' );?></option>
 					</select>
 					<script>
 						function pmpro_changeGateway(gateway)
@@ -145,12 +145,12 @@
 
 			<tr class="pmpro_settings_divider">
 				<td colspan="2">
-					<?php _e('Currency and Tax Settings', 'paid-memberships-pro' ); ?>
+					<?php _e('Currency and Tax Settings', 'bella-membership-plugin' ); ?>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("currency"));?>" <?php if(!empty($gateway) && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource" && $gateway != "payflowpro" && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "gourl") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="currency"><?php _e('Currency', 'paid-memberships-pro' );?>:</label>
+					<label for="currency"><?php _e('Currency', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
 					<select name="currency">
@@ -166,12 +166,12 @@
 						}
 					?>
 					</select>
-					<small><?php _e( 'Not all currencies will be supported by every gateway. Please check with your gateway.', 'paid-memberships-pro' ); ?></small>
+					<small><?php _e( 'Not all currencies will be supported by every gateway. Please check with your gateway.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("accepted_credit_cards"));?>" <?php if(!empty($gateway) && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "stripe" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="creditcards"><?php _e('Accepted Credit Card Types', 'paid-memberships-pro' );?></label>
+					<label for="creditcards"><?php _e('Accepted Credit Card Types', 'bella-membership-plugin' );?></label>
 				</th>
 				<td>
 					<input type="checkbox" id="creditcards_visa" name="creditcards_visa" value="1" <?php if(in_array("Visa", $pmpro_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_visa">Visa</label><br />
@@ -185,25 +185,25 @@
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("tax_rate"));?>" <?php if(!empty($gateway) && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="tax"><?php _e('Sales Tax', 'paid-memberships-pro' );?> <small>(<?php _e('optional', 'paid-memberships-pro' );?>)</small></label>
+					<label for="tax"><?php _e('Sales Tax', 'bella-membership-plugin' );?> <small>(<?php _e('optional', 'bella-membership-plugin' );?>)</small></label>
 				</th>
 				<td>
-					<?php _e('Tax State', 'paid-memberships-pro' );?>:
-					<input type="text" id="tax_state" name="tax_state" size="4" value="<?php echo esc_attr($tax_state)?>" /> <small>(<?php _e('abbreviation, e.g. "PA"', 'paid-memberships-pro' );?>)</small>
+					<?php _e('Tax State', 'bella-membership-plugin' );?>:
+					<input type="text" id="tax_state" name="tax_state" size="4" value="<?php echo esc_attr($tax_state)?>" /> <small>(<?php _e('abbreviation, e.g. "PA"', 'bella-membership-plugin' );?>)</small>
 					&nbsp; <?php _e('Tax Rate', 'paid-memberships-pro' ); ?>:
-					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" /> <small>(<?php _e('decimal, e.g. "0.06"', 'paid-memberships-pro' );?>)</small>
-					<p><small><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="http://www.paidmembershipspro.com/2013/10/non-us-taxes-paid-memberships-pro/">pmpro_tax filter</a>.', 'paid-memberships-pro' );?></small></p>
+					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" /> <small>(<?php _e('decimal, e.g. "0.06"', 'bella-membership-plugin' );?>)</small>
+					<p><small><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="#">pmpro_tax filter</a>.', 'bella-membership-plugin' );?></small></p>
 				</td>
 			</tr>
 
 			<tr class="pmpro_settings_divider">
 				<td colspan="2">
-					<?php _e('SSL Settings', 'paid-memberships-pro' ); ?>
+					<?php _e('SSL Settings', 'bella-membership-plugin' ); ?>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("use_ssl"));?>">
 				<th scope="row" valign="top">
-					<label for="use_ssl"><?php _e('Force SSL', 'paid-memberships-pro' );?>:</label>
+					<label for="use_ssl"><?php _e('Force SSL', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
 					<?php
@@ -228,26 +228,26 @@
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="sslseal"><?php _e('SSL Seal Code', 'paid-memberships-pro' );?>:</label>
+					<label for="sslseal"><?php _e('SSL Seal Code', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
 					<textarea id="sslseal" name="sslseal" rows="3" cols="80"><?php echo stripslashes(esc_textarea($sslseal))?></textarea>
-					<br /><small><?php _e('Your <strong><a target="_blank" href="http://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/">SSL Certificate</a></strong> must be installed by your web host. Your <strong>SSL Seal</strong> will be a short HTML or JavaScript snippet that can be pasted here.', 'paid-memberships-pro' ); ?></small>
+					<br /><small><?php _e('Your <strong><a target="_blank" href="#">SSL Certificate</a></strong> must be installed by your web host. Your <strong>SSL Seal</strong> will be a short HTML or JavaScript snippet that can be pasted here.', 'bella-membership-plugin' ); ?></small>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="nuclear_HTTPS"><?php _e('Extra HTTPS URL Filter', 'paid-memberships-pro' );?>:</label>
+					<label for="nuclear_HTTPS"><?php _e('Extra HTTPS URL Filter', 'bella-membership-plugin' );?>:</label>
 				</th>
 				<td>
-					<input type="checkbox" id="nuclear_HTTPS" name="nuclear_HTTPS" value="1" <?php if(!empty($nuclear_HTTPS)) { ?>checked="checked"<?php } ?> /> <label for="nuclear_HTTPS"><?php _e('Pass all generated HTML through a URL filter to add HTTPS to URLs used on secure pages. Check this if you are using SSL and have warnings on your checkout pages.', 'paid-memberships-pro' );?></label>
+					<input type="checkbox" id="nuclear_HTTPS" name="nuclear_HTTPS" value="1" <?php if(!empty($nuclear_HTTPS)) { ?>checked="checked"<?php } ?> /> <label for="nuclear_HTTPS"><?php _e('Pass all generated HTML through a URL filter to add HTTPS to URLs used on secure pages. Check this if you are using SSL and have warnings on your checkout pages.', 'bella-membership-plugin' );?></label>
 				</td>
 			</tr>
 
 		</tbody>
 		</table>
 		<p class="submit">
-			<input name="savesettings" type="submit" class="button-primary" value="<?php _e('Save Settings', 'paid-memberships-pro' );?>" />
+			<input name="savesettings" type="submit" class="button-primary" value="<?php _e('Save Settings', 'bella-membership-plugin' );?>" />
 		</p>
 	</form>
 
