@@ -46,7 +46,7 @@
 				if(!extension_loaded($module)){
 					$pmpro_braintree_error = true;					
 					$msg = -1;
-					$msgt = sprintf(__("The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Braintree', $module);
+					$msgt = sprintf(__("The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'bella-membership-plugin' ), 'Braintree', $module);
 					
 					//throw error on checkout page
 					if(!is_admin())
@@ -108,7 +108,7 @@
 		static function pmpro_gateways($gateways)
 		{
 			if(empty($gateways['braintree']))
-				$gateways['braintree'] = __('Braintree Payments', 'paid-memberships-pro' );
+				$gateways['braintree'] = __('Braintree Payments', 'bella-membership-plugin' );
 		
 			return $gateways;
 		}
@@ -164,12 +164,12 @@
 		?>
 		<tr class="pmpro_settings_divider gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
-				<?php _e('Braintree Settings', 'paid-memberships-pro' ); ?>
+				<?php _e('Braintree Settings', 'bella-membership-plugin' ); ?>
 			</td>
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_merchantid"><?php _e('Merchant ID', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_merchantid"><?php _e('Merchant ID', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_merchantid" name="braintree_merchantid" size="60" value="<?php echo esc_attr($values['braintree_merchantid'])?>" />
@@ -177,7 +177,7 @@
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_publickey"><?php _e('Public Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_publickey"><?php _e('Public Key', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_publickey" name="braintree_publickey" size="60" value="<?php echo esc_attr($values['braintree_publickey'])?>" />
@@ -185,7 +185,7 @@
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_privatekey"><?php _e('Private Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_privatekey"><?php _e('Private Key', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_privatekey" name="braintree_privatekey" size="60" value="<?php echo esc_attr($values['braintree_privatekey'])?>" />
@@ -193,7 +193,7 @@
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_encryptionkey"><?php _e('Client-Side Encryption Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_encryptionkey"><?php _e('Client-Side Encryption Key', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<textarea id="braintree_encryptionkey" name="braintree_encryptionkey" rows="3" cols="80"><?php echo esc_textarea($values['braintree_encryptionkey'])?></textarea>					
@@ -201,11 +201,11 @@
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('Web Hook URL', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('Web Hook URL', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<p>
-					<?php _e('To fully integrate with Braintree, be sure to set your Web Hook URL to', 'paid-memberships-pro' );?> 
+					<?php _e('To fully integrate with Braintree, be sure to set your Web Hook URL to', 'bella-membership-plugin' );?> 
 					<pre><?php 
 						//echo admin_url("admin-ajax.php") . "?action=braintree_webhook";
 						echo PMPRO_URL . "/services/braintree-webhook.php";
@@ -318,8 +318,8 @@
 			<thead>
 				<tr>
 					<th>
-						<span class="pmpro_thead-name"><?php _e('Payment Information', 'paid-memberships-pro' );?></span>
-						<span class="pmpro_thead-msg"><?php printf(__('We Accept %s', 'paid-memberships-pro' ), $pmpro_accepted_credit_cards_string);?></span>
+						<span class="pmpro_thead-name"><?php _e('Payment Information', 'bella-membership-plugin' );?></span>
+						<span class="pmpro_thead-msg"><?php printf(__('We Accept %s', 'bella-membership-plugin' ), $pmpro_accepted_credit_cards_string);?></span>
 					</th>
 				</tr>
 			</thead>
@@ -341,7 +341,7 @@
 							{
 							?>
 							<div class="pmpro_payment-card-type">
-								<label for="CardType"><?php _e('Card Type', 'paid-memberships-pro' );?></label>
+								<label for="CardType"><?php _e('Card Type', 'bella-membership-plugin' );?></label>
 								<select id="CardType" name="CardType" class=" <?php echo pmpro_getClassForField("CardType");?>">
 									<?php foreach($pmpro_accepted_credit_cards as $cc) { ?>
 										<option value="<?php echo $cc?>" <?php if($CardType == $cc) { ?>selected="selected"<?php } ?>><?php echo $cc?></option>
@@ -353,12 +353,12 @@
 						?>
 					
 						<div class="pmpro_payment-account-number">
-							<label for="AccountNumber"><?php _e('Card Number', 'paid-memberships-pro' );?></label>
+							<label for="AccountNumber"><?php _e('Card Number', 'bella-membership-plugin' );?></label>
 							<input id="AccountNumber" name="AccountNumber" class="input <?php echo pmpro_getClassForField("AccountNumber");?>" type="text" size="25" value="<?php echo esc_attr($AccountNumber)?>" data-encrypted-name="number" autocomplete="off" /> 
 						</div>
 					
 						<div class="pmpro_payment-expiration">
-							<label for="ExpirationMonth"><?php _e('Expiration Date', 'paid-memberships-pro' );?></label>
+							<label for="ExpirationMonth"><?php _e('Expiration Date', 'bella-membership-plugin' );?></label>
 							<select id="ExpirationMonth" name="ExpirationMonth" class=" <?php echo pmpro_getClassForField("ExpirationMonth");?>">
 								<option value="01" <?php if($ExpirationMonth == "01") { ?>selected="selected"<?php } ?>>01</option>
 								<option value="02" <?php if($ExpirationMonth == "02") { ?>selected="selected"<?php } ?>>02</option>
@@ -390,8 +390,8 @@
 							{								
 						?>
 						<div class="pmpro_payment-cvv">
-							<label for="CVV"><?php _e('CVV', 'paid-memberships-pro' );?></label>
-							<input class="input" id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr($_REQUEST['CVV']); }?>" class=" <?php echo pmpro_getClassForField("CVV");?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo pmpro_https_filter(PMPRO_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
+							<label for="CVV"><?php _e('CVV', 'bella-membership-plugin' );?></label>
+							<input class="input" id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr($_REQUEST['CVV']); }?>" class=" <?php echo pmpro_getClassForField("CVV");?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo pmpro_https_filter(PMPRO_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'bella-membership-plugin' );?></a>)</small>
 						</div>
 						<?php
 							}
@@ -399,9 +399,9 @@
 						
 						<?php if($pmpro_show_discount_code) { ?>
 						<div class="pmpro_payment-discount-code">
-							<label for="discount_code"><?php _e('Discount Code', 'paid-memberships-pro' );?></label>
+							<label for="discount_code"><?php _e('Discount Code', 'bella-membership-plugin' );?></label>
 							<input class="input <?php echo pmpro_getClassForField("discount_code");?>" id="discount_code" name="discount_code" type="text" size="20" value="<?php echo esc_attr($discount_code)?>" />
-							<input type="button" id="discount_code_button" name="discount_code_button" value="<?php _e('Apply', 'paid-memberships-pro' );?>" />
+							<input type="button" id="discount_code_button" name="discount_code_button" value="<?php _e('Apply', 'bella-membership-plugin' );?>" />
 							<p id="discount_code_message" class="pmpro_message" style="display: none;"></p>
 						</div>
 						<?php } ?>
@@ -456,7 +456,7 @@
 				else
 				{					
 					if(empty($order->error))
-						$order->error = __("Unknown error: Initial payment failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Initial payment failed.", 'bella-membership-plugin' );
 					return false;
 				}
 			}				
@@ -515,7 +515,7 @@
 				else
 				{					
 					$order->errorcode = true;
-					$order->error = __("Error during settlement:", 'paid-memberships-pro' ) . " " . $response->message;
+					$order->error = __("Error during settlement:", 'bella-membership-plugin' ) . " " . $response->message;
 					$order->shorterror = $response->message;
 					return false;
 				}								
@@ -524,7 +524,7 @@
 			{
 				//$order->status = "error";
 				$order->errorcode = true;
-				$order->error = __("Error during charge:", 'paid-memberships-pro' ) . " " . $response->message;
+				$order->error = __("Error during charge:", 'bella-membership-plugin' ) . " " . $response->message;
 				$order->shorterror = $response->message;
 				return false;
 			}									
@@ -616,7 +616,7 @@
 						}
 						else
 						{							
-							$order->error = __("Failed to update customer.", 'paid-memberships-pro' ) . " " . $response->message;
+							$order->error = __("Failed to update customer.", 'bella-membership-plugin' ) . " " . $response->message;
 							$order->shorterror = $order->error;
 							return false;
 						}
@@ -664,14 +664,14 @@
 					}
 					else
 					{						
-						$order->error = __("Failed to create customer.", 'paid-memberships-pro' ) . " " . $result->message;
+						$order->error = __("Failed to create customer.", 'bella-membership-plugin' ) . " " . $result->message;
 						$order->shorterror = $order->error;
 						return false;
 					}									
 				}
 				catch (Exception $e)
 				{					
-					$order->error = __("Error creating customer record with Braintree:", 'paid-memberships-pro' ) . $e->getMessage() . " (" . get_class($e) . ")";
+					$order->error = __("Error creating customer record with Braintree:", 'bella-membership-plugin' ) . $e->getMessage() . " (" . get_class($e) . ")";
 					$order->shorterror = $order->error;
 					return false;
 				}
@@ -771,7 +771,7 @@
 			}
 			catch (Exception $e)
 			{				
-				$order->error = __("Error subscribing customer to plan with Braintree:", 'paid-memberships-pro' ) . " " . $e->getMessage() . " (" . get_class($e) . ")";
+				$order->error = __("Error subscribing customer to plan with Braintree:", 'bella-membership-plugin' ) . " " . $e->getMessage() . " (" . get_class($e) . ")";
 				//return error
 				$order->shorterror = $order->error;
 				return false;
@@ -786,7 +786,7 @@
 			}
 			else
 			{
-				$order->error = __("Failed to subscribe with Braintree:", 'paid-memberships-pro' ) . " " . $result->message;
+				$order->error = __("Failed to subscribe with Braintree:", 'bella-membership-plugin' ) . " " . $result->message;
 				$order->shorterror = $result->message;
 				return false;
 			}	
@@ -824,7 +824,7 @@
 				catch(Exception $e)
 				{
 					$order->updateStatus("cancelled");	//assume it's been cancelled already
-					$order->error = __("Could not find the subscription.", 'paid-memberships-pro' ) . " " . $e->getMessage();
+					$order->error = __("Could not find the subscription.", 'bella-membership-plugin' ) . " " . $e->getMessage();
 					$order->shorterror = $order->error;
 					return false;	//no subscription found	
 				}
@@ -837,14 +837,14 @@
 				else
 				{
 					$order->updateStatus("cancelled");	//assume it's been cancelled already
-					$order->error = __("Could not find the subscription.", 'paid-memberships-pro' ) . " " . $result->message;
+					$order->error = __("Could not find the subscription.", 'bella-membership-plugin' ) . " " . $result->message;
 					$order->shorterror = $order->error;
 					return false;	//no subscription found	
 				}
 			}
 			else
 			{
-				$order->error = __("Could not find the subscription.", 'paid-memberships-pro' );
+				$order->error = __("Could not find the subscription.", 'bella-membership-plugin' );
 				$order->shorterror = $order->error;
 				return false;	//no customer found
 			}						
