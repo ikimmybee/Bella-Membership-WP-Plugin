@@ -36,7 +36,7 @@
 		static function pmpro_gateways($gateways)
 		{
 			if(empty($gateways['authorizenet']))
-				$gateways['authorizenet'] = __('Authorize.net', 'paid-memberships-pro' );
+				$gateways['authorizenet'] = __('Authorize.net', 'bella-membership-plugin' );
 
 			return $gateways;
 		}
@@ -90,12 +90,12 @@
 		?>
 		<tr class="pmpro_settings_divider gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
-				<?php _e('Authorize.net Settings', 'paid-memberships-pro' ); ?>
+				<?php _e('Authorize.net Settings', 'bella-membership-plugin' ); ?>
 			</td>
 		</tr>
 		<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="loginname"><?php _e('Login Name', 'paid-memberships-pro' );?>:</label>
+				<label for="loginname"><?php _e('Login Name', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="loginname" name="loginname" size="60" value="<?php echo esc_attr($values['loginname'])?>" />
@@ -103,7 +103,7 @@
 		</tr>
 		<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="transactionkey"><?php _e('Transaction Key', 'paid-memberships-pro' );?>:</label>
+				<label for="transactionkey"><?php _e('Transaction Key', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="transactionkey" name="transactionkey" size="60" value="<?php echo esc_attr($values['transactionkey'])?>" />
@@ -111,10 +111,10 @@
 		</tr>
 		<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('Silent Post URL', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('Silent Post URL', 'bella-membership-plugin' );?>:</label>
 			</th>
 			<td>
-				<p><?php _e('To fully integrate with Authorize.net, be sure to set your Silent Post URL to', 'paid-memberships-pro' );?> <pre><?php echo admin_url("admin-ajax.php") . "?action=authnet_silent_post";?></pre></p>
+				<p><?php _e('To fully integrate with Authorize.net, be sure to set your Silent Post URL to', 'bella-membership-plugin' );?> <pre><?php echo admin_url("admin-ajax.php") . "?action=authnet_silent_post";?></pre></p>
 			</td>
 		</tr>
 		<?php
@@ -168,7 +168,7 @@
 				else
 				{
 					if(empty($order->error))
-						$order->error = __("Unknown error: Authorization failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Authorization failed.", 'bella-membership-plugin' );
 					return false;
 				}
 			}
@@ -219,13 +219,13 @@
 							if($this->void($order))
 							{
 								if(!$order->error)
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'bella-membership-plugin' );
 							}
 							else
 							{
 								if(!$order->error)
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
-								$order->error .= " " . __("A partial payment was made that we could not void. Please contact the site owner immediately to correct this.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'bella-membership-plugin' );
+								$order->error .= " " . __("A partial payment was made that could not be void. Please contact support immediately to correct this.", 'bella-membership-plugin' );
 							}
 
 							return false;
@@ -241,7 +241,7 @@
 				else
 				{
 					if(empty($order->error))
-						$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Payment failed.", 'bella-membership-plugin' );
 
 					return false;
 				}
@@ -300,7 +300,7 @@
 				"x_exp_date"		=> $order->ExpirationDate,
 
 				"x_amount"			=> $amount,
-				"x_description"		=> $order->membership_level->name . " " . __("Membership", 'paid-memberships-pro' ),
+				"x_description"		=> $order->membership_level->name . " " . __("Membership", 'bella-membership-plugin' ),
 
 				"x_first_name"		=> $order->FirstName,
 				"x_last_name"		=> $order->LastName,
@@ -906,8 +906,8 @@
 			else
 			{
 				$order->status = "error";
-				$order->error = __("Could not connect to Authorize.net", 'paid-memberships-pro' );
-				$order->shorterror = __("Could not connect to Authorize.net", 'paid-memberships-pro' );
+				$order->error = __("Could not connect to Authorize.net", 'bella-membership-plugin' );
+				$order->shorterror = __("Could not connect to Authorize.net", 'bella-membership-plugin' );
 				return false;
 			}
 		}
